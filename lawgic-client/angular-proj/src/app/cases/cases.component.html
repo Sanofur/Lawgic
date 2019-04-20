@@ -1,0 +1,127 @@
+<div class="body">
+  
+  <div class="row">
+  <div class="col s12">
+    <div class="card z-depth-3 hoverable">
+      <div class="card-title">
+           <div class="row" style="margin-bottom: 0;">
+            <mat-grid-list cols="12">
+             <mat-grid-tile
+             [colspan]="12"
+           [rowspan]="1">
+               <h1 style="text-align: center">LAWGIC</h1>
+              </mat-grid-tile>
+              </mat-grid-list>
+             <div  layout="row" layout-sm="column">
+            <mat-grid-list cols="5" rowHeight="100px">
+  <mat-grid-tile
+      [colspan]="1"
+      [rowspan]="1">
+ <!--   <select name="branch">
+      <option>CIVIL</option>
+      <option>CRIMINAL</option>
+      <option>FINANCIAL</option>
+  </select> -->
+
+  <mat-form-field>
+  <mat-label>branch</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let branch of branches" [value]="branch.value">
+      {{branch.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+  </mat-grid-tile>
+
+
+ <mat-grid-tile
+      [colspan]="1"
+      [rowspan]="1"
+      [style.background]='lightblue'>
+    <form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput [(ngModel)]="key1" [ngModelOptions]="{standalone: true}" placeholder="Enter first keyword">
+  </mat-form-field>
+</form>
+    
+  </mat-grid-tile>
+ 
+   <mat-grid-tile
+      [colspan]="1"
+      [rowspan]="1"
+      [style.background]="lightpink">
+     <form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput [(ngModel)]="key2" [ngModelOptions]="{standalone: true}" placeholder="Enter second keyword">
+  </mat-form-field>
+</form>
+
+  </mat-grid-tile>
+  <mat-grid-tile
+      [colspan]="1"
+      [rowspan]="1"
+      [style.background]="lightpink">
+
+       <form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput [(ngModel)]="key3" [ngModelOptions]="{standalone: true}" placeholder="Enter third keyword">
+  </mat-form-field>
+</form>
+
+  </mat-grid-tile>
+  <mat-grid-tile
+      [colspan]="1"
+      [rowspan]="1"
+     >
+     <!-- <input type="submit" value="Submit" (click)="getData()"> -->
+     <button mat-raised-button color="primary" (click)="getData()">Submit</button>
+  </mat-grid-tile>
+</mat-grid-list>
+           </div>  
+         </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+      
+<mat-grid-list cols="10">
+
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="Name">
+    <th mat-header-cell *matHeaderCellDef>Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Description">
+    <th mat-header-cell *matHeaderCellDef> Description </th>
+    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="LongDescription">
+    <th mat-header-cell *matHeaderCellDef> Long Description </th>
+    <td mat-cell *matCellDef="let element"> {{element.long_description}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="SolvedDate">
+    <th mat-header-cell *matHeaderCellDef> Solved Date </th>
+    <td mat-cell *matCellDef="let element"> {{element.solved_date}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+
+
+</mat-grid-list>
+
+
+
+</div>
+

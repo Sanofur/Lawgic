@@ -36,6 +36,16 @@ export class RestService {
 
   }
 
+  getCases (product):Observable<any>{
+    console.log("getting cases");
+    console.log(product);
+    return this.http.post<any>('http://localhost:3000/Case',
+      JSON.stringify(product),httpOptions)
+    .pipe(tap((product)=> console.log('retrived data')),
+    catchError(this.handleError<any>('addProduct'))
+    );
+
+  }
 
   private handleError<T> (operation ='operation',result?: T){
   	return (error: any): Observable<T> =>
